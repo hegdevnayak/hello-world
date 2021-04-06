@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: harbor-registry-flask-test
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: harbor-registry-flask-test
@@ -16,6 +16,6 @@ spec:
         - name: my-harbor-secret
       containers:
         - name: harbor-registry-flask-test
-          image: test/vdocker:latest
+          image: $docker_registry/test/vdocker:$latest_tag
           ports:
             - containerPort: 8000
